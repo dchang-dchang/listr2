@@ -1,4 +1,10 @@
 export function isUnicodeSupported (): boolean {
+  if (process.env.LISTR_FORCE_UNICODE === '1') {
+    return true
+  } else if (process.env.LISTR_FORCE_UNICODE === '0') {
+    return false
+  }
+  
   if (process.platform !== 'win32') {
     return true
   }
